@@ -8,8 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.isagiongo.cursomc.domain.Categoria;
+import com.isagiongo.cursomc.domain.Cidade;
+import com.isagiongo.cursomc.domain.Estado;
 import com.isagiongo.cursomc.domain.Produto;
 import com.isagiongo.cursomc.repositories.CategoriaRepository;
+import com.isagiongo.cursomc.repositories.CidadeRepository;
+import com.isagiongo.cursomc.repositories.EstadoRepository;
 import com.isagiongo.cursomc.repositories.ProdutoRepository;
 
 @SpringBootApplication
@@ -20,6 +24,12 @@ public class CursomcApplication implements CommandLineRunner{
 	
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
+	@Autowired
+	private EstadoRepository estadoRepository;
+	
+	@Autowired
+	private CidadeRepository cidadeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -30,7 +40,7 @@ public class CursomcApplication implements CommandLineRunner{
 		Categoria cat1 = new Categoria(null,"Informática");
 		Categoria cat2 = new Categoria(null,"Escritório");
 		Categoria cat3 = new Categoria(null,"Papelaria");
-
+		
 		Produto p1 = new Produto(null,"Computador", 2450.00);
 		Produto p2 = new Produto(null,"Cadeira", 324.98);
 		Produto p3 = new Produto(null,"Mouse", 29.90);
@@ -47,5 +57,28 @@ public class CursomcApplication implements CommandLineRunner{
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
 		produtoRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
+
+		Estado est1 = new Estado(null,"Pernambuco");
+		Estado est2 = new Estado(null,"Rio Grande do Sul");
+		Estado est3 = new Estado(null,"Bahia");
+		Estado est4 = new Estado(null,"Minas Gerais");
+		Estado est5 = new Estado(null,"Mato Grosso do Sul");
+		
+		Cidade c1 = new Cidade(null, "Recife", est1);
+		Cidade c2 = new Cidade(null, "Porto Alegre", est2);
+		Cidade c3 = new Cidade(null, "Salvador", est3);
+		Cidade c4 = new Cidade(null, "Belo Horizonte", est4);
+		Cidade c5 = new Cidade(null, "Dourador", est5);
+		Cidade c6 = new Cidade(null, "Torres", est2);
+		
+		est1.getCidades().add(c1);
+		est2.getCidades().addAll(Arrays.asList(c2,c6));
+		est3.getCidades().add(c3);
+		est4.getCidades().add(c4);
+		est5.getCidades().add(c5);
+		
+		estadoRepository.saveAll(Arrays.asList(est1,est2,est3,est4,est5));
+		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3,c4,c5,c6));
+		
 	}
 }
