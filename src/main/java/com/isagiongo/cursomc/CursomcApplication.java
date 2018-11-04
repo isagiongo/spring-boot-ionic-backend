@@ -51,13 +51,13 @@ public class CursomcApplication implements CommandLineRunner {
 
 	@Autowired
 	private EnderecoRepository enderecoRepository;
-	
+
 	@Autowired
 	private PedidoRepository pedidoRepository;
-	
+
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
-	
+
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
 
@@ -117,12 +117,13 @@ public class CursomcApplication implements CommandLineRunner {
 		Endereco e2 = new Endereco(null, "Alameda Jau", "1890", "Casa 2", "Jardins", "7052555", c4, cli1);
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 
-		Cliente cli2 = new Cliente(null, "Veronica Torres", "veronica@gmail.com", "77785225142", TipoClienteEnum.PESSOA_FISICA);
+		Cliente cli2 = new Cliente(null, "Veronica Torres", "veronica@gmail.com", "77785225142",
+				TipoClienteEnum.PESSOA_FISICA);
 		cli2.getTelefones().add("98764-3322");
 		Endereco e3 = new Endereco(null, "Amelia Teles", "120", "Apt 32", "Petrópolis", "90460155", c2, cli2);
 		cli2.getEnderecos().add(e3);
-		
-		clienteRepository.saveAll(Arrays.asList(cli1,cli2));
+
+		clienteRepository.saveAll(Arrays.asList(cli1, cli2));
 		enderecoRepository.saveAll(Arrays.asList(e1, e2, e3));
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -133,26 +134,26 @@ public class CursomcApplication implements CommandLineRunner {
 		Pagamento pagto1 = new PagamentoComCartao(null, EstadoPagamentoEnum.QUITADO, ped1, 6);
 		ped1.setPagamento(pagto1);
 
-		Pagamento pagto2 = new PagamentoComBoleto(null, EstadoPagamentoEnum.PENDENTE, ped2, sdf.parse("20/10/2017 00:00"),
-				null);
+		Pagamento pagto2 = new PagamentoComBoleto(null, EstadoPagamentoEnum.PENDENTE, ped2,
+				sdf.parse("20/10/2017 00:00"), null);
 		ped2.setPagamento(pagto2);
 
 		cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
 
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
-		
+
 		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.00);
 		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.00);
 		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
-		
+
 		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
 		ped2.getItens().addAll(Arrays.asList(ip3));
-		
+
 		p1.getItens().addAll(Arrays.asList(ip1));
 		p2.getItens().addAll(Arrays.asList(ip3));
 		p3.getItens().addAll(Arrays.asList(ip2));
-		
-		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));	
+
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 	}
 }

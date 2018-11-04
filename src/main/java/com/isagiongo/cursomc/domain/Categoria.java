@@ -12,18 +12,20 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Categoria implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	private String nome;
-	
-	@ManyToMany(mappedBy="categorias")
+
+	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();
-	
-	public Categoria() {}
+
+	public Categoria() {
+	}
 
 	public Categoria(Integer id, String nome) {
 		super();
@@ -46,11 +48,11 @@ public class Categoria implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
-	
+
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
@@ -79,8 +81,4 @@ public class Categoria implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
 }

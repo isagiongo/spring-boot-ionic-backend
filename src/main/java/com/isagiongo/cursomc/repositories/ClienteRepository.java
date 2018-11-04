@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.isagiongo.cursomc.domain.Cliente;
 
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
-
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 }
