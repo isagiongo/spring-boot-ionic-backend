@@ -17,6 +17,9 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.isagiongo.cursomc.domain.enums.TipoClienteEnum;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 public class Cliente implements Serializable {
 
