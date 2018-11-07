@@ -2,6 +2,10 @@ package com.isagiongo.cursomc.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.isagiongo.cursomc.domain.Categoria;
 
 public class CategoriaDTO implements Serializable {
@@ -10,6 +14,8 @@ public class CategoriaDTO implements Serializable {
 
 	private Integer id;
 
+	@NotEmpty(message="O campo não pode ser vazio.")
+	@Length(min=5, max=80, message="O campo deve ter entre 5 e 80 caracteres.")
 	private String nome;
 
 	public CategoriaDTO() {
