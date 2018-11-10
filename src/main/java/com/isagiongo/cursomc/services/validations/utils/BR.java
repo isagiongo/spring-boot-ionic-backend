@@ -1,7 +1,5 @@
 package com.isagiongo.cursomc.services.validations.utils;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
-
 public class BR {
 
 	// CPF
