@@ -2,22 +2,48 @@ package com.isagiongo.cursomc.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.isagiongo.cursomc.services.validations.ClienteInsert;
+
+@ClienteInsert
 public class ClienteNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@NotEmpty(message = "O campo não pode ser vazio.")
+	@Length(min = 5, max = 120, message = "O campo deve ter entre 5 e 120 caracteres.")
 	private String nome;
+
+	@NotEmpty(message = "O campo não pode ser vazio.")
+	@Email(message = "Email inválido.")
 	private String email;
+
+	@NotEmpty(message = "O campo não pode ser vazio.")
 	private String cpfOuCnpj;
+
 	private Integer tipoCliente;
 
+	@NotEmpty(message = "O campo não pode ser vazio.")
 	private String logradouro;
+
+	@NotEmpty(message = "O campo não pode ser vazio.")
 	private String numero;
+
 	private String complemento;
+
 	private String bairro;
+
+	@NotEmpty(message = "O campo não pode ser vazio.")
 	private String cep;
 
+	@NotEmpty(message = "O campo não pode ser vazio.")
 	private String telefone1;
+
 	private String telefone2;
+
 	private String telefone3;
 
 	private Integer cidadeId;
