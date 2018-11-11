@@ -8,18 +8,20 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 import com.isagiongo.cursomc.domain.Cliente;
+import com.isagiongo.cursomc.services.validations.ClienteUpdate;
 
+@ClienteUpdate
 public class ClienteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 
-	@NotEmpty(message="O campo não pode ser vazio.")
-	@Length(min=5,max=120,message="O campo deve ter entre 5 e 120 caracteres.")
+	@NotEmpty(message = "O campo não pode ser vazio.")
+	@Length(min = 5, max = 120, message = "O campo deve ter entre 5 e 120 caracteres.")
 	private String nome;
 
-	@NotEmpty(message="O campo não pode ser vazio.")
-	@Email(message="Email inválido.")
+	@NotEmpty(message = "O campo não pode ser vazio.")
+	@Email(message = "Email inválido.")
 	private String email;
 
 	public ClienteDTO() {
