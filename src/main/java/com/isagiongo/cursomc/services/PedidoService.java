@@ -28,19 +28,19 @@ public class PedidoService {
 
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
-	
+
 	@Autowired
 	private ProdutoService produtoService;
 
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
-	
+
 	@Autowired
 	private ClienteService clienteService;
 
 	@Autowired
 	private EmailService emailService;
-	
+
 	public Pedido find(Integer id) {
 		Optional<Pedido> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
@@ -54,14 +54,14 @@ public class PedidoService {
 		obj.setCliente(clienteService.find(obj.getCliente().getId()));
 		obj.getPagamento().setEstadoPagamento(EstadoPagamentoEnum.PENDENTE);
 		obj.getPagamento().setPedido(obj);
-		
-		if(obj.getPagamento() instanceof PagamentoComBoleto) {
+
+		if (obj.getPagamento() instanceof PagamentoComBoleto) {
 			PagamentoComBoleto pagto = (PagamentoComBoleto) obj.getPagamento();
 			boletoService.preencherPagamentoComBoleto(pagto, obj.getInstante());
 		}
-		
+
 		obj = repo.save(obj);
-	pagamentoRepository.save(obj.getPagamento());
+		pagamentoRepository.save(obj.getPagamento());
 		for (ItemPedido item : obj.getItens()) {
 			item.setDesconto(0.0);
 			item.setProduto(produtoService.find(item.getProduto().getId()));
@@ -69,7 +69,7 @@ public class PedidoService {
 			item.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
-		emailService.sendOrderConfirmationEmail(obj);
+		emailService.sendOrderConfirmationHtmlEmail(obj);
 		return obj;
 	}
 }
