@@ -20,6 +20,7 @@ import com.isagiongo.cursomc.domain.PagamentoComCartao;
 import com.isagiongo.cursomc.domain.Pedido;
 import com.isagiongo.cursomc.domain.Produto;
 import com.isagiongo.cursomc.domain.enums.EstadoPagamentoEnum;
+import com.isagiongo.cursomc.domain.enums.PerfilEnum;
 import com.isagiongo.cursomc.domain.enums.TipoClienteEnum;
 import com.isagiongo.cursomc.repositories.CategoriaRepository;
 import com.isagiongo.cursomc.repositories.CidadeRepository;
@@ -150,6 +151,7 @@ public class DBService {
 		Cliente cli2 = new Cliente(null, "Veronica Torres", "serrotacinorev@yahoo.com.br", "77785225142",
 				TipoClienteEnum.PESSOA_FISICA, pe.encode("abc123"));
 		cli2.getTelefones().add("98764-3322");
+		cli2.addPerfil(PerfilEnum.ADMIN);
 		Endereco e3 = new Endereco(null, "Amelia Teles", "120", "Apt 32", "Petrópolis", "90460155", c2, cli2);
 		cli2.getEnderecos().add(e3);
 
