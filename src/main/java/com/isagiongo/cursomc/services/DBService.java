@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.isagiongo.cursomc.domain.Categoria;
@@ -59,6 +60,9 @@ public class DBService {
 
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
+
+	@Autowired
+	private BCryptPasswordEncoder pe;
 
 	public void instantiateTestDatabase() throws ParseException {
 
@@ -137,14 +141,14 @@ public class DBService {
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
 
 		Cliente cli1 = new Cliente(null, "Isa Giongo", "isagiongo@gmail.com", "89570260106",
-				TipoClienteEnum.PESSOA_FISICA);
+				TipoClienteEnum.PESSOA_FISICA, pe.encode("abc123"));
 		cli1.getTelefones().addAll(Arrays.asList("3333-0000", "9988-88889"));
 		Endereco e1 = new Endereco(null, "Amelia Teles", "120", "Apt 32", "Petrópolis", "90460155", c2, cli1);
 		Endereco e2 = new Endereco(null, "Alameda Jau", "1890", "Casa 2", "Jardins", "7052555", c4, cli1);
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 
 		Cliente cli2 = new Cliente(null, "Veronica Torres", "serrotacinorev@yahoo.com.br", "77785225142",
-				TipoClienteEnum.PESSOA_FISICA);
+				TipoClienteEnum.PESSOA_FISICA, pe.encode("abc123"));
 		cli2.getTelefones().add("98764-3322");
 		Endereco e3 = new Endereco(null, "Amelia Teles", "120", "Apt 32", "Petrópolis", "90460155", c2, cli2);
 		cli2.getEnderecos().add(e3);

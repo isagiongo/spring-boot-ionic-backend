@@ -31,6 +31,9 @@ public class Cliente implements Serializable {
 
 	private String email;
 
+	@JsonIgnore
+	private String senha;
+	
 	private String cpfOuCnpj;
 
 	private Integer tipoCliente;
@@ -49,13 +52,14 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoClienteEnum tipoCliente) {
+	public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoClienteEnum tipoCliente, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
 		this.tipoCliente = (tipoCliente==null) ? null : tipoCliente.getCodigo();
+		this.senha = senha;
 	}
 
 	public Integer getId() {
@@ -82,6 +86,14 @@ public class Cliente implements Serializable {
 		this.email = email;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
 	public String getCpfOuCnpj() {
 		return cpfOuCnpj;
 	}

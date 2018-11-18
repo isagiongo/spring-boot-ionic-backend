@@ -20,6 +20,9 @@ public class ClienteNewDTO implements Serializable {
 	@NotEmpty(message = "O campo não pode ser vazio.")
 	@Email(message = "Email inválido.")
 	private String email;
+	
+	@NotEmpty(message = "O campo não pode ser vazio.")
+	private String senha;
 
 	@NotEmpty(message = "O campo não pode ser vazio.")
 	private String cpfOuCnpj;
@@ -65,6 +68,14 @@ public class ClienteNewDTO implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getCpfOuCnpj() {
