@@ -149,7 +149,7 @@ public class DBService {
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 
 		Cliente cli2 = new Cliente(null, "Veronica Torres", "serrotacinorev@yahoo.com.br", "77785225142",
-				TipoClienteEnum.PESSOA_FISICA, pe.encode("abc123"));
+				TipoClienteEnum.PESSOA_FISICA, pe.encode("1234"));
 		cli2.getTelefones().add("98764-3322");
 		cli2.addPerfil(PerfilEnum.ADMIN);
 		Endereco e3 = new Endereco(null, "Amelia Teles", "120", "Apt 32", "Petrópolis", "90460155", c2, cli2);
