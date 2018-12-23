@@ -37,6 +37,12 @@ public class ClienteResource {
 		return ResponseEntity.ok().body(obj);
 	}
 
+	@RequestMapping(value = "/email", method = RequestMethod.GET)
+	public ResponseEntity<Cliente> find(@RequestParam(value="value") String email) {
+		Cliente obj = service.findByEmail(email);
+		return ResponseEntity.ok().body(obj);
+	}
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDTO, @PathVariable Integer id) {
 		Cliente obj = service.fromDTO(objDTO);
@@ -44,7 +50,7 @@ public class ClienteResource {
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
-
+	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
