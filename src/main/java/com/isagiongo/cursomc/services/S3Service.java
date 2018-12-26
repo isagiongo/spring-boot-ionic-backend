@@ -5,8 +5,6 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,8 +16,6 @@ import com.isagiongo.cursomc.services.exceptions.FileException;
 
 @Service
 public class S3Service {
-
-	private Logger LOG = LoggerFactory.getLogger(S3Service.class);
 
 	@Autowired
 	private AmazonS3 s3cliente;

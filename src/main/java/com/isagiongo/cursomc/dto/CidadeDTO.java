@@ -2,8 +2,6 @@ package com.isagiongo.cursomc.dto;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotEmpty;
-
 import com.isagiongo.cursomc.domain.Cidade;
 
 public class CidadeDTO implements Serializable {
