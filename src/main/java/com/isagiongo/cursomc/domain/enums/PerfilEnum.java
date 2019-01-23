@@ -2,7 +2,7 @@ package com.isagiongo.cursomc.domain.enums;
 
 public enum PerfilEnum {
 
-	ADMIN(1, "ROLE_ADMIN"), CLIENTE(2, "ROLE_CLIENTE");
+	ADMIN(1, "ROLE_ADMIN"), CLIENTE(2, "ROLE_CLIENTE"), TESTE(3, "ROLE_TESTE");
 
 	private Integer codigo;
 
