@@ -77,7 +77,6 @@ public class DBService {
 		Categoria cat8 = new Categoria(null, "Eletroportáteis");
 		Categoria cat9 = new Categoria(null, "Games");
 		Categoria cat10 = new Categoria(null, "Telefonia");
-		Categoria cat11 = new Categoria(null, "teste");
 
 		Produto p1 = new Produto(null, "Computador", 2450.00);
 		Produto p2 = new Produto(null, "Cadeira", 324.98);
@@ -164,7 +163,7 @@ public class DBService {
 		p35.getCategorias().addAll(Arrays.asList(cat1));
 		p36.getCategorias().addAll(Arrays.asList(cat1));
 		
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9, cat10, cat11));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9, cat10));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p33, p34, p35, p36));
 
 		Estado est1 = new Estado(null, "Pernambuco");
@@ -190,14 +189,14 @@ public class DBService {
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
 
 		Cliente cli1 = new Cliente(null, "Isa Giongo", "isagiongo@gmail.com", "89570260106",
-				TipoClienteEnum.PESSOA_FISICA, pe.encode("123"));
+				TipoClienteEnum.PESSOA_FISICA, pe.encode("123456"));
 		cli1.getTelefones().addAll(Arrays.asList("3333-0000", "9988-88889"));
 		Endereco e1 = new Endereco(null, "Amelia Teles", "120", "Apt 32", "Petrópolis", "90460155", c2, cli1);
 		Endereco e2 = new Endereco(null, "Alameda Jau", "1890", "Casa 2", "Jardins", "7052555", c4, cli1);
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 
 		Cliente cli2 = new Cliente(null, "Veronica Torres", "serrotacinorev@yahoo.com.br", "77785225142",
-				TipoClienteEnum.PESSOA_FISICA, pe.encode("1234"));
+				TipoClienteEnum.PESSOA_FISICA, pe.encode("123456"));
 		cli2.getTelefones().add("98764-3322");
 		cli2.addPerfil(PerfilEnum.ADMIN);
 		Endereco e3 = new Endereco(null, "Amelia Teles", "120", "Apt 32", "Petrópolis", "90460155", c2, cli2);
