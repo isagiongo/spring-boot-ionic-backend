@@ -22,6 +22,8 @@ import com.isagiongo.cursomc.domain.Categoria;
 import com.isagiongo.cursomc.dto.CategoriaDTO;
 import com.isagiongo.cursomc.services.CategoriaService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResource {
@@ -29,6 +31,7 @@ public class CategoriaResource {
 	@Autowired
 	private CategoriaService service;
 
+	@ApiOperation(value = "Busca por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Categoria> find(@PathVariable Integer id) {
 		Categoria obj = service.find(id);
@@ -60,6 +63,7 @@ public class CategoriaResource {
 		return ResponseEntity.noContent().build();
 	}
 
+	@ApiOperation(value="Lista todos")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<CategoriaDTO>> findAll() {
 		List<Categoria> lista = service.findAll();
